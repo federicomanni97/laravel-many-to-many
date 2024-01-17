@@ -31,7 +31,7 @@ class ProjectController extends Controller
         //
         $categories = Category::all();
         $technologies = Technology::all();
-        return view('admin.projects.create', compact('categories'));
+        return view('admin.projects.create', compact('categories', 'technologies'));
     }
 
     /**
@@ -41,7 +41,7 @@ class ProjectController extends Controller
     {
         //
         $formData = $request->validated();
-        // creo lo slug 
+        // creo lo slug
         $slug = Str::slug($formData['title'], '-');
         // aggiungo slug al formdata
         $formData['slug'] = $slug;

@@ -37,10 +37,10 @@
             <div class="form-group">
                 <h6>Select Tags</h6>
                 @foreach ($technologies as $technology)
-                    <div class="form-check @error('$technologies') is invalid @enderror">
-                        <input type="checkbox" class="form-check-input" name="technologies[]" value="{{technology->id}}" {{ in_array($technology->id, old('technologies', []))  'checked' ? : '' }}>
+                    <div class="form-check @error('technologies') is invalid @enderror">
+                        <input type="checkbox" class="form-check-input" name="technologies[]" value="{{$technology->id}}" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
                         <label for="" class="form-check-label">
-                            {{technology->name}}
+                            {{$technology->name}}
                         </label>
                     </div>
                 @endforeach
