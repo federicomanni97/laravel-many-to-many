@@ -10,19 +10,19 @@ class Category extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function projects(){
+    public function projects()
+    {
         return $this->hasMany(Project::class);
     }
 
     public static function getSlug($name)
     {
-    $slug = Str::of($name)->slug("-");
-    $count = 1;
-    while (Category::where("slug", $slug)->first()) {
-        $slug = Str::of($name)->slug("-") . "-{$count}";
-        $count++;
+        $slug = Str::of($name)->slug("-");
+        $count = 1;
+        while (Category::where("slug", $slug)->first()) {
+            $slug = Str::of($name)->slug("-") . "-{$count}";
+            $count++;
+        }
+        return $slug;
     }
-    return $slug;
-}
-
 }
