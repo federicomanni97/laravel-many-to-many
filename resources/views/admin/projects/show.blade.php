@@ -8,5 +8,12 @@
         </div>
         <p>{{$project->body}}</p>
         <button class="btn btn-primary mb-3"><a href="{{route('admin.projects.edit', $project)}}" class="text-white text-decoration-none">Edit</a></button>
+        @if($project->technologies)
+        <div class="mb-3">
+            @foreach($project->technologies as $technology)
+                <a href="{{route('admin.technologies.show', $technology->slug)}}" class="badge">{{technology->name}}</a>
+            @endforeach
+        </div>
+        @endif
     </section>
 @endsection
