@@ -1,9 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <section class="container">
-    <h1>Edit Post {{$project->title}}</h1>
-    <p>section content</p>
-    <form action="{{route('admin.projects.update' , $project->id)}}" enctype="multipart/form-data" method="POST">
+    <h2 class="mt-3">Edit Post: {{$project->title}}</h2>
+    <form action="{{route('admin.projects.update' , $project->slug)}}" enctype="multipart/form-data" method="POST">
         @csrf
         @method('PUT')
         <div class="mb-3">
