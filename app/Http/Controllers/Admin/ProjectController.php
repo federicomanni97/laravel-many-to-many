@@ -19,7 +19,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $currentUserId=Auth::user();
+        $projects = Project::where('user_id', $currentUserId)->paginate(3);
+        // $projects = Project::paginate(3);
+        // $projects = Project::all();
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -68,8 +71,12 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+        if(Auth::id() == $project->id){
+            return view('admin.projects.show', compact('project'));
+        }
+        abort(403);
         //
-        return view('admin.projects.show', compact('project'));
+
     }
 
     /**
